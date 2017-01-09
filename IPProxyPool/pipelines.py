@@ -7,5 +7,9 @@
 
 
 class IpproxypoolPipeline(object):
+
+    def __init__(self):
+        self.file = open('data.json', 'wb')
+
     def process_item(self, item, spider):
-        return item
+        self.file.write('{\'ip_port\': \'' + item['ip'] + ':' + item['port'] + '\', \'user_pass\': \'\'},\n')
